@@ -1,0 +1,32 @@
+[
+  {"name":"京都市","region":"京都市域"},
+
+  {"name":"福知山市","region":"中丹"},
+  {"name":"舞鶴市","region":"中丹"},
+  {"name":"綾部市","region":"中丹"},
+
+  {"name":"宮津市","region":"丹後"},
+  {"name":"京丹後市","region":"丹後"},
+  {"name":"伊根町","region":"丹後"},
+  {"name":"与謝野町","region":"丹後"},
+
+  {"name":"亀岡市","region":"南丹"},
+  {"name":"南丹市","region":"南丹"},
+  {"name":"京丹波町","region":"南丹"},
+
+  {"name":"宇治市","region":"山城"},
+  {"name":"城陽市","region":"山城"},
+  {"name":"向日市","region":"山城"},
+  {"name":"長岡京市","region":"山城"},
+  {"name":"八幡市","region":"山城"},
+  {"name":"京田辺市","region":"山城"},
+  {"name":"木津川市","region":"山城"},
+  {"name":"大山崎町","region":"山城"},
+  {"name":"久御山町","region":"山城"},
+  {"name":"井手町","region":"山城"},
+  {"name":"宇治田原町","region":"山城"},
+  {"name":"笠置町","region":"山城"},
+  {"name":"和束町","region":"山城"},
+  {"name":"精華町","region":"山城"},
+  {"name":"南山城村","region":"山城"}
+]

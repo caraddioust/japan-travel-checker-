@@ -1,0 +1,35 @@
+[
+  {"name":"四日市市","region":"北勢"},
+  {"name":"桑名市","region":"北勢"},
+  {"name":"鈴鹿市","region":"北勢"},
+  {"name":"亀山市","region":"北勢"},
+  {"name":"いなべ市","region":"北勢"},
+  {"name":"木曽岬町","region":"北勢"},
+  {"name":"東員町","region":"北勢"},
+  {"name":"菰野町","region":"北勢"},
+  {"name":"朝日町","region":"北勢"},
+  {"name":"川越町","region":"北勢"},
+
+  {"name":"津市","region":"中勢"},
+  {"name":"松阪市","region":"中勢"},
+  {"name":"多気町","region":"中勢"},
+  {"name":"明和町","region":"中勢"},
+  {"name":"大台町","region":"中勢"},
+
+  {"name":"伊賀市","region":"伊賀"},
+  {"name":"名張市","region":"伊賀"},
+
+  {"name":"伊勢市","region":"南勢"},
+  {"name":"鳥羽市","region":"南勢"},
+  {"name":"志摩市","region":"南勢"},
+  {"name":"玉城町","region":"南勢"},
+  {"name":"度会町","region":"南勢"},
+  {"name":"大紀町","region":"南勢"},
+  {"name":"南伊勢町","region":"南勢"},
+
+  {"name":"尾鷲市","region":"東紀州"},
+  {"name":"熊野市","region":"東紀州"},
+  {"name":"紀北町","region":"東紀州"},
+  {"name":"御浜町","region":"東紀州"},
+  {"name":"紀宝町","region":"東紀州"}
+]
