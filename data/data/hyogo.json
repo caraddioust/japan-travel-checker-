@@ -1,0 +1,52 @@
+[
+  {"name":"神戸市","region":"神戸市域"},
+
+  {"name":"尼崎市","region":"阪神南"},
+  {"name":"西宮市","region":"阪神南"},
+  {"name":"芦屋市","region":"阪神南"},
+
+  {"name":"伊丹市","region":"阪神北"},
+  {"name":"宝塚市","region":"阪神北"},
+  {"name":"川西市","region":"阪神北"},
+  {"name":"三田市","region":"阪神北"},
+  {"name":"猪名川町","region":"阪神北"},
+
+  {"name":"明石市","region":"東播磨"},
+  {"name":"加古川市","region":"東播磨"},
+  {"name":"高砂市","region":"東播磨"},
+  {"name":"稲美町","region":"東播磨"},
+  {"name":"播磨町","region":"東播磨"},
+
+  {"name":"西脇市","region":"北播磨"},
+  {"name":"三木市","region":"北播磨"},
+  {"name":"小野市","region":"北播磨"},
+  {"name":"加西市","region":"北播磨"},
+  {"name":"加東市","region":"北播磨"},
+  {"name":"多可町","region":"北播磨"},
+
+  {"name":"姫路市","region":"中播磨"},
+  {"name":"神河町","region":"中播磨"},
+  {"name":"市川町","region":"中播磨"},
+  {"name":"福崎町","region":"中播磨"},
+
+  {"name":"相生市","region":"西播磨"},
+  {"name":"たつの市","region":"西播磨"},
+  {"name":"赤穂市","region":"西播磨"},
+  {"name":"宍粟市","region":"西播磨"},
+  {"name":"太子町","region":"西播磨"},
+  {"name":"上郡町","region":"西播磨"},
+  {"name":"佐用町","region":"西播磨"},
+
+  {"name":"豊岡市","region":"但馬"},
+  {"name":"養父市","region":"但馬"},
+  {"name":"朝来市","region":"但馬"},
+  {"name":"香美町","region":"但馬"},
+  {"name":"新温泉町","region":"但馬"},
+
+  {"name":"丹波篠山市","region":"丹波"},
+  {"name":"丹波市","region":"丹波"},
+
+  {"name":"洲本市","region":"淡路"},
+  {"name":"南あわじ市","region":"淡路"},
+  {"name":"淡路市","region":"淡路"}
+]

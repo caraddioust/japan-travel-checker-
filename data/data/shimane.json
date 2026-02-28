@@ -1,0 +1,23 @@
+[
+    {"name":"松江市","region":"出雲"},
+{"name":"出雲市","region":"出雲"},
+{"name":"安来市","region":"出雲"},
+{"name":"雲南市","region":"出雲"},
+{"name":"奥出雲町","region":"出雲"},
+{"name":"飯南町","region":"出雲"},
+
+{"name":"浜田市","region":"石見"},
+{"name":"益田市","region":"石見"},
+{"name":"大田市","region":"石見"},
+{"name":"江津市","region":"石見"},
+{"name":"川本町","region":"石見"},
+{"name":"美郷町","region":"石見"},
+{"name":"邑南町","region":"石見"},
+{"name":"津和野町","region":"石見"},
+{"name":"吉賀町","region":"石見"},
+
+{"name":"海士町","region":"隠岐"},
+{"name":"西ノ島町","region":"隠岐"},
+{"name":"隠岐の島町","region":"隠岐"},
+{"name":"知夫村","region":"隠岐"}
+]

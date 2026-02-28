@@ -1,0 +1,29 @@
+[
+  {"name":"能代市","region":"県北"},
+  {"name":"大館市","region":"県北"},
+  {"name":"鹿角市","region":"県北"},
+  {"name":"北秋田市","region":"県北"},
+  {"name":"小坂町","region":"県北"},
+  {"name":"上小阿仁村","region":"県北"},
+  {"name":"藤里町","region":"県北"},
+  {"name":"三種町","region":"県北"},
+  {"name":"八峰町","region":"県北"},
+
+  {"name":"秋田市","region":"中央"},
+  {"name":"男鹿市","region":"中央"},
+  {"name":"潟上市","region":"中央"},
+  {"name":"由利本荘市","region":"中央"},
+  {"name":"にかほ市","region":"中央"},
+  {"name":"五城目町","region":"中央"},
+  {"name":"八郎潟町","region":"中央"},
+  {"name":"井川町","region":"中央"},
+  {"name":"大潟村","region":"中央"},
+
+  {"name":"横手市","region":"県南"},
+  {"name":"湯沢市","region":"県南"},
+  {"name":"大仙市","region":"県南"},
+  {"name":"仙北市","region":"県南"},
+  {"name":"美郷町","region":"県南"},
+  {"name":"羽後町","region":"県南"},
+  {"name":"東成瀬村","region":"県南"}
+]

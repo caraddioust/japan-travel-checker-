@@ -1,0 +1,35 @@
+[
+  {"name":"新潟市","region":"下越"},
+  {"name":"三条市","region":"下越"},
+  {"name":"新発田市","region":"下越"},
+  {"name":"加茂市","region":"下越"},
+  {"name":"燕市","region":"下越"},
+  {"name":"五泉市","region":"下越"},
+  {"name":"阿賀野市","region":"下越"},
+  {"name":"村上市","region":"下越"},
+  {"name":"胎内市","region":"下越"},
+  {"name":"聖籠町","region":"下越"},
+  {"name":"弥彦村","region":"下越"},
+  {"name":"田上町","region":"下越"},
+  {"name":"阿賀町","region":"下越"},
+  {"name":"関川村","region":"下越"},
+  {"name":"粟島浦村","region":"下越"},
+
+  {"name":"長岡市","region":"中越"},
+  {"name":"柏崎市","region":"中越"},
+  {"name":"小千谷市","region":"中越"},
+  {"name":"十日町市","region":"中越"},
+  {"name":"見附市","region":"中越"},
+  {"name":"魚沼市","region":"中越"},
+  {"name":"南魚沼市","region":"中越"},
+  {"name":"出雲崎町","region":"中越"},
+  {"name":"湯沢町","region":"中越"},
+  {"name":"津南町","region":"中越"},
+  {"name":"刈羽村","region":"中越"},
+
+  {"name":"上越市","region":"上越"},
+  {"name":"糸魚川市","region":"上越"},
+  {"name":"妙高市","region":"上越"},
+
+  {"name":"佐渡市","region":"佐渡"}
+]

@@ -1,0 +1,19 @@
+[
+  {"name":"黒部市","region":"東部"},
+  {"name":"魚津市","region":"東部"},
+  {"name":"滑川市","region":"東部"},
+  {"name":"入善町","region":"東部"},
+  {"name":"朝日町","region":"東部"},
+
+  {"name":"富山市","region":"中部"},
+  {"name":"舟橋村","region":"中部"},
+  {"name":"上市町","region":"中部"},
+  {"name":"立山町","region":"中部"},
+
+  {"name":"高岡市","region":"西部"},
+  {"name":"氷見市","region":"西部"},
+  {"name":"砺波市","region":"西部"},
+  {"name":"小矢部市","region":"西部"},
+  {"name":"南砺市","region":"西部"},
+  {"name":"射水市","region":"西部"}
+]

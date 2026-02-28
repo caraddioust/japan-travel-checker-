@@ -1,0 +1,24 @@
+[
+  {"name":"中津市","region":"北部"},
+  {"name":"豊後高田市","region":"北部"},
+  {"name":"宇佐市","region":"北部"},
+  {"name":"国東市","region":"北部"},
+  {"name":"姫島村","region":"北部"},
+
+  {"name":"大分市","region":"中部"},
+  {"name":"別府市","region":"中部"},
+  {"name":"由布市","region":"中部"},
+  {"name":"日出町","region":"中部"},
+  {"name":"杵築市","region":"中部"},
+
+  {"name":"佐伯市","region":"南部"},
+  {"name":"臼杵市","region":"南部"},
+  {"name":"津久見市","region":"南部"},
+
+  {"name":"竹田市","region":"豊肥"},
+  {"name":"豊後大野市","region":"豊肥"},
+
+  {"name":"日田市","region":"西部"},
+  {"name":"九重町","region":"西部"},
+  {"name":"玖珠町","region":"西部"}
+]

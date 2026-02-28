@@ -1,0 +1,33 @@
+[
+  {"name":"延岡市","region":"延岡"},
+  {"name":"高千穂町","region":"延岡"},
+  {"name":"日之影町","region":"延岡"},
+  {"name":"五ヶ瀬町","region":"延岡"},
+
+  {"name":"日向市","region":"日向"},
+  {"name":"門川町","region":"日向"},
+  {"name":"美郷町","region":"日向"},
+  {"name":"諸塚村","region":"日向"},
+  {"name":"椎葉村","region":"日向"},
+
+  {"name":"西都市","region":"西都児湯"},
+  {"name":"高鍋町","region":"西都児湯"},
+  {"name":"新富町","region":"西都児湯"},
+  {"name":"西米良村","region":"西都児湯"},
+  {"name":"木城町","region":"西都児湯"},
+  {"name":"川南町","region":"西都児湯"},
+  {"name":"都農町","region":"西都児湯"},
+
+  {"name":"宮崎市","region":"宮崎東諸県"},
+  {"name":"国富町","region":"宮崎東諸県"},
+  {"name":"綾町","region":"宮崎東諸県"},
+
+  {"name":"都城市","region":"都城北諸県"},
+  {"name":"小林市","region":"都城北諸県"},
+  {"name":"えびの市","region":"都城北諸県"},
+  {"name":"三股町","region":"都城北諸県"},
+  {"name":"高原町","region":"都城北諸県"},
+
+  {"name":"日南市","region":"日南串間"},
+  {"name":"串間市","region":"日南串間"}
+]

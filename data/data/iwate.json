@@ -1,0 +1,38 @@
+[
+  {"name":"二戸市","region":"県北"},
+  {"name":"久慈市","region":"県北"},
+  {"name":"八幡平市","region":"県北"},
+  {"name":"葛巻町","region":"県北"},
+  {"name":"岩手町","region":"県北"},
+  {"name":"軽米町","region":"県北"},
+  {"name":"九戸村","region":"県北"},
+  {"name":"一戸町","region":"県北"},
+  {"name":"洋野町","region":"県北"},
+  {"name":"野田村","region":"県北"},
+  {"name":"普代村","region":"県北"},
+
+  {"name":"盛岡市","region":"県央"},
+  {"name":"滝沢市","region":"県央"},
+  {"name":"雫石町","region":"県央"},
+  {"name":"紫波町","region":"県央"},
+  {"name":"矢巾町","region":"県央"},
+
+  {"name":"花巻市","region":"県南"},
+  {"name":"北上市","region":"県南"},
+  {"name":"遠野市","region":"県南"},
+  {"name":"一関市","region":"県南"},
+  {"name":"奥州市","region":"県南"},
+  {"name":"西和賀町","region":"県南"},
+  {"name":"金ケ崎町","region":"県南"},
+  {"name":"平泉町","region":"県南"},
+  {"name":"住田町","region":"県南"},
+
+  {"name":"宮古市","region":"沿岸"},
+  {"name":"釜石市","region":"沿岸"},
+  {"name":"大船渡市","region":"沿岸"},
+  {"name":"陸前高田市","region":"沿岸"},
+  {"name":"山田町","region":"沿岸"},
+  {"name":"大槌町","region":"沿岸"},
+  {"name":"岩泉町","region":"沿岸"},
+  {"name":"田野畑村","region":"沿岸"}
+]
