@@ -3,130 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5722">
     <title>47都道府県制覇チェッカー</title>
-    <div class="usage-hint">
-        👆 タップ：訪問記録<br>
-        ✌️ Wタップ：市町村ページ
-    </div>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f0f2f5; color: #333; }
-        h1 { text-align: center; }
-
-        .usage-hint {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7); /* 黒っぽい半透明 */
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    pointer-events: none; /* メッセージ越しに下のボタンを押せるようにする */
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    animation: fadein 2s;
-}
-
-/* 最初にふわっと出すアニメーション */
-@keyframes fadein {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* スマホでは少し小さくする */
-@media (max-width: 600px) {
-    .usage-hint {
-        bottom: 10px;
-        right: 10px;
-        font-size: 0.7rem;
-    }
-}
+        body { font-family: sans-serif; padding: 20px; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        h1 { text-align: center; margin-bottom: 10px; }
         
-        /* カウンターの見た目 */
-        .counter {
+        /* カウンター表示 */
+        .stats {
             background: white;
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 10px;
             z-index: 100;
         }
+        .stats b { color: #ff5722; font-size: 1.3rem; }
 
-        /* 都道府県リストのレイアウト */
         .pref-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: 10px;
             list-style: none;
             padding: 0;
+            margin-bottom: 30px;
         }
 
-        /* 共通設定 */
-        .pref.visited { color: white; }
-
-        /* 地方ごとの色設定（例） */
-        .hokkaido.visited { background-color: #448aff; }
-        .tohoku.visited   { background-color: #4caf50; }
-        .kanto.visited    { background-color: #ff9800; }
-        .chubu.visited    { background-color: #ffeb3b; color: #333; }
-        .kinki.visited    { background-color: #e91e63; }
-        .chugoku.visited  { background-color: #8bc34a; }
-        .shikoku.visited  { background-color: #00bcd4; }
-        .kyushu.visited   { background-color: #795548; }
-
-        /* 各都道府県ボタンの見た目 */
         .pref {
             background: white;
             border: 2px solid #ddd;
-            padding: 15px 10px;
+            padding: 15px 5px;
             text-align: center;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 0.9rem;
             transition: all 0.2s;
             user-select: none;
-            display: block;
         }
 
-        /* 訪問済みの色（オレンジ） */
-        .pref.visited {
-            background-color: #ff5722 !important;
-            color: white !important;
-            border-color: #e64a19;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-        /* 全制覇（金色）の見た目 */
-        .pref.completed {
-            background: linear-gradient(135deg, #ffd700, #ffb700); /* キラキラしたゴールド */
-            color: #333;
-            border-color: #d4af37;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-            font-weight: bold;
-        }
-        .pref.visited.hokkaido { background-color: #448aff; } /* 青 */
-        .pref.visited.tohoku   { background-color: #4caf50; } /* 緑 */
-        .pref.visited.kanto    { background-color: #ff9800; } /* オレンジ */
-        .pref.visited.chubu    { background-color: #fbc02d; color: #333; } /* 黄 */
-        .pref.visited.kinki    { background-color: #e91e63; } /* ピンク */
-        .pref.visited.chugoku  { background-color: #8bc34a; } /* 黄緑 */
-        .pref.visited.shikoku  { background-color: #00bcd4; } /* 水色 */
-        .pref.visited.kyushu   { background-color: #795548; } /* 茶色 */
+        /* 色の状態 */
+        .pref.visited { background-color: #ff9800 !important; color: white; border-color: #f57c00; }
+        .pref.completed { background: linear-gradient(135deg, #ffd700, #ffb700) !important; color: #333; border-color: #d4af37; font-weight: bold; }
+        .pref.passing { border: 2px solid #81d4fa; background-color: #e1f5fe; }
 
-        .pref:hover { border-color: #999; }
+        .usage-hint {
+            position: fixed; bottom: 20px; right: 20px;
+            background: rgba(0, 0, 0, 0.7); color: white;
+            padding: 8px 15px; border-radius: 20px; font-size: 0.8rem;
+            z-index: 1000; pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
-    <h1>🗾 47都道府県 訪問記録</h1>
+    <h1>🗾 都道府県 訪問記録</h1>
 
-    <div class="stats">
-    制覇数：<span id="count">0</span> / <span id="total">0</span>
+<div class="stats">
+    <!-- 都道府県の統計 -->
+    都道府県：<b><span id="pref-count">0</span></b> / 47<br>
+    <small>
+        ( 
+        🚗通過: <span id="pref-pass">0</span> | 
+        🧡訪問: <span id="pref-visit">0</span> | 
+        💜宿泊: <span id="pref-stay">0</span> 
+        )
+    </small>
+    <br>
+
+    <!-- 市町村の統計 -->
+    市町村：<b><span id="city-count">0</span></b> / <span id="city-total">0</span><br>
+    <small>
+        ( 
+        🚗通過: <span id="city-pass">0</span> | 
+        🧡訪問: <span id="city-visit">0</span> | 
+        💜宿泊: <span id="city-stay">0</span> 
+        )
+    </small>
 </div>
 
     <div id="regions-container"></div>
+
+    <div class="usage-hint">都道府県名をクリックで市町村詳細</div>
 
 <script>
     const prefectures = [
@@ -184,137 +145,149 @@
         kinki: "近畿地方", chugoku: "中国地方", shikoku: "四国地方", kyushu: "九州・沖縄地方"
     };
 
-    const storageKey = 'visited_prefectures'; 
-    const container = document.getElementById('regions-container');
-    const countEl = document.getElementById('count');
-    const totalEl = document.getElementById('total');
+    function renderPage() {
+        const container = document.getElementById('regions-container');
+        container.innerHTML = "";
+        let currentRegion = "";
+        let currentUl = null;
 
-    // 初期表示の更新
-    function refreshStats() {
-        const currentVisitedList = JSON.parse(localStorage.getItem(storageKey)) || [];
-        if(countEl) countEl.textContent = currentVisitedList.length;
-        if(totalEl) totalEl.textContent = prefectures.length;
-    }
-    refreshStats();
+        let totalCityCount = 0;
+        let cityPass = 0, cityVisit = 0, cityStay = 0;
 
-    let currentRegion = "";
-    let currentUl = null;
-
-    prefectures.forEach(item => {
-        // --- 地方ごとの見出しを作る処理（ここが抜けていました） ---
-        if (currentRegion !== item.region) {
-            currentRegion = item.region;
-            const h2 = document.createElement('h2');
-            h2.textContent = regionNames[item.region];
-            container.appendChild(h2);
-
-            currentUl = document.createElement('ul');
-            currentUl.className = 'pref-grid';
-            container.appendChild(currentUl);
-        }
-
-        const li = document.createElement('li');
-        li.className = `pref ${item.region}`;
-
-        // 1. 最新の「市町村カウント」を取得
-        const cityKey = `visited_${item.id}_current`;
-        const visitedCities = JSON.parse(localStorage.getItem(cityKey)) || [];
-        const visitCount = visitedCities.length;
+        let totalPrefCount = 0;
+        let prefPass = 0, prefVisit = 0, prefStay = 0;
         
-        li.textContent = `${item.name} (${visitCount}/${item.total})`;
+        const overallCityTotal = prefectures.reduce((sum, p) => sum + p.total, 0);
 
-        // 2. 最新の「手動オレンジ(都道府県)」リストを読み込む
-        const currentVisitedList = JSON.parse(localStorage.getItem(storageKey)) || [];
-
-        // 3. 色塗りの判定
-        if (visitCount > 0 && visitCount === item.total) {
-            li.classList.add('completed'); // 金色
-        } else if (currentVisitedList.includes(item.id)) {
-            li.classList.add('visited');   // オレンジ
-        }
-
-        // --- クリック処理 ---
-        let clickTimer = null;
-        li.onclick = function(e) {
-            if (clickTimer) {
-                clearTimeout(clickTimer);
-                clickTimer = null;
-                window.location.href = `city.html?pref=${item.id}&name=${encodeURIComponent(item.name)}`;
-            } else {
-                clickTimer = setTimeout(() => {
-                    if (!this.classList.contains('completed')) {
-                        this.classList.toggle('visited');
-                        
-                        let latestList = JSON.parse(localStorage.getItem(storageKey)) || [];
-                        const id = item.id;
-                        
-                        if (this.classList.contains('visited')) {
-                            if (!latestList.includes(id)) latestList.push(id);
-                        } else {
-                            latestList = latestList.filter(p => p !== id);
-                        }
-                        
-                        localStorage.setItem(storageKey, JSON.stringify(latestList));
-                        refreshStats();
-                    }
-                    clickTimer = null;
-                }, 250);
+        prefectures.forEach(item => {
+            // 地方ごとのセクション作成
+            if (currentRegion !== item.region) {
+                currentRegion = item.region;
+                const h2 = document.createElement('h2');
+                h2.textContent = regionNames[item.region];
+                container.appendChild(h2);
+                currentUl = document.createElement('ul');
+                currentUl.className = 'pref-grid';
+                container.appendChild(currentUl);
             }
-        };
 
-        currentUl.appendChild(li);
-    });
+            // データ読み込み
+            const key = `status_${item.id}`;
+            const statusMap = JSON.parse(localStorage.getItem(key)) || {};
+            const statuses = Object.values(statusMap);
+            
+            // カウント計算 ('none' 以外をカウント)
+            const prefVisitedCount = statuses.filter(s => s !== 'none').length;
+            totalCityCount += prefVisitedCount;
+            cityPass += statuses.filter(s => s === 'pass').length;
+            cityVisit += statuses.filter(s => s === 'visit').length;
+            cityStay += statuses.filter(s => s === 'stay').length;
+            
+            //--- 都道府県の集計 ---
+            if (prefVisitedCount > 0){
+            totalPrefCount++;
+            // その県の中で一番強い状態を、その県の状態とする
+                if (statuses.includes('stay')) {
+                    prefStay++;
+                } else if (statuses.includes('visit')) {
+                    prefVisit++;
+                } else if (statuses.includes('pass')) {
+                    prefPass++;
+                }
+            }
+        
 
-    // --- データの書き出し ---
-function exportData() {
-    const allData = {};
-    // localStorageの中身を全部さらって、このアプリに関係するものだけ集める
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith('visited_')) {
-            allData[key] = localStorage.getItem(key);
-        }
-    }
-    const jsonText = JSON.stringify(allData);
-    document.getElementById('backupText').value = jsonText;
-    alert("データをテキストとして書き出しました。この文字列をコピーして保存してください！");
+            // リスト作成
+            const li = document.createElement('li');
+            li.className = 'pref';
+            li.textContent = `${item.name} (${prefVisitedCount}/${item.total})`;
+
+            // クラス判定
+            if (statuses.includes('stay')) {
+                li.classList.add('completed');
+            } else if (statuses.includes('visit')) {
+                li.classList.add('visited');
+            } else if (statuses.includes('pass')) {
+                li.classList.add('passing');
+            }
+
+            // --- クリック処理（シングルクリックで即移動、ダブルクリック構造も保持） ---
+            let clickCount = 0;
+            li.onclick = function() {
+                clickCount++;
+
+                if (clickCount === 1) {
+                    // --- 1回目のクリック（シングルクリック） ---
+                    setTimeout(() => {
+                        if (clickCount === 1) {
+                            // シングルクリック確定時の処理：ページ移動
+                            window.location.href = `city.html?pref=${item.id}&name=${encodeURIComponent(item.name)}`;
+                        } else {
+                            // ダブルクリック確定時の処理：今は空ですが、将来の拡張用に残せます
+                            console.log("ダブルクリックされました（将来の拡張用）");
+                            // 例：詳細情報をポップアップで出す、など
+                        }
+                        clickCount = 0; // カウントをリセット
+                    }, 250); // 0.25秒以内に2回目が来なければシングルとみなす
+                }
+            };
+
+            currentUl.appendChild(li);
+        });
+
+        // --- 画面への反映 ---
+    // 都道府県
+    document.getElementById('pref-count').textContent = totalPrefCount;
+    document.getElementById('pref-pass').textContent = prefPass;
+    document.getElementById('pref-visit').textContent = prefVisit;
+    document.getElementById('pref-stay').textContent = prefStay;
+
+    // 市町村
+    document.getElementById('city-count').textContent = totalCityCount;
+    document.getElementById('city-total').textContent = overallCityTotal;
+    document.getElementById('city-pass').textContent = cityPass;
+    document.getElementById('city-visit').textContent = cityVisit;
+    document.getElementById('city-stay').textContent = cityStay;
 }
 
-// --- データの復元 ---
-function importData() {
-    const jsonText = document.getElementById('backupText').value;
-    if (!jsonText) {
-        alert("テキストエリアにバックアップデータを貼り付けてください。");
-        return;
-    }
 
-    try {
-        const data = JSON.parse(jsonText);
-        if (confirm("データを復元しますか？現在の記録は上書きされます。")) {
-            // データを一つずつ保存し直す
-            Object.keys(data).forEach(key => {
-                localStorage.setItem(key, data[key]);
-            });
-            alert("復元が完了しました！ページを再読み込みします。");
-            location.reload(); // 画面を更新して色を反映
+    // バックアップ機能
+    window.exportData = function() {
+        const allData = {};
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith('status_')) {
+                allData[key] = localStorage.getItem(key);
+            }
         }
-    } catch (e) {
-        alert("データの形式が正しくありません。コピーしたテキストをそのまま貼り付けてください。");
-    }
-}
+        document.getElementById('backupText').value = JSON.stringify(allData);
+        alert("データを書き出しました！");
+    };
+
+    window.importData = function() {
+        const jsonText = document.getElementById('backupText').value;
+        try {
+            const data = JSON.parse(jsonText);
+            Object.keys(data).forEach(key => localStorage.setItem(key, data[key]));
+            alert("復元完了！");
+            renderPage();
+        } catch (e) {
+            alert("エラー：正しいデータを貼り付けてください");
+        }
+    };
+
+    // 初期実行
+    renderPage();
 </script>
-</body>
-<hr style="margin-top: 50px;">
-    <div class="backup-section" style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <h3>💾 データのバックアップ・復元</h3>
-        <p style="font-size: 0.8rem; color: #666;">このテキストをコピーして保存するか、別のPCのこの欄に貼り付けて「復元」してください。</p>
-        
-        <textarea id="backupText" style="width: 100%; height: 100px; margin-bottom: 10px; font-family: monospace; font-size: 12px;"></textarea>
-        
-        <div style="display: flex; gap: 10px;">
-            <button onclick="exportData()" style="flex: 1; padding: 10px; cursor: pointer; background: #4caf50; color: white; border: none; border-radius: 5px;">データを書き出す</button>
-            <button onclick="importData()" style="flex: 1; padding: 10px; cursor: pointer; background: #2196f3; color: white; border: none; border-radius: 5px;">データを復元する</button>
-        </div>
-    </div>
 
+<hr style="margin-top: 50px;">
+<div class="backup-section" style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 50px;">
+    <h3>💾 バックアップ</h3>
+    <textarea id="backupText" style="width: 100%; height: 60px;"></textarea>
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button onclick="exportData()" style="flex: 1; padding: 10px; background: #4caf50; color: white; border: none; border-radius: 5px;">書き出し</button>
+        <button onclick="importData()" style="flex: 1; padding: 10px; background: #2196f3; color: white; border: none; border-radius: 5px;">復元</button>
+    </div>
+</div>
+</body>
 </html>
