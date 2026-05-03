@@ -1,4 +1,5 @@
-[{"name":"中間市","region":"北九州"},
+[{"name":"北九州市","region":"北九州"},
+{"name":"中間市","region":"北九州"},
 {"name":"芦屋町","region":"北九州"},
 {"name":"水巻町","region":"北九州"},
 {"name":"岡垣町","region":"北九州"},
@@ -10,7 +11,7 @@
 {"name":"行橋市","region":"北九州"},
 {"name":"苅田町","region":"北九州"},
 {"name":"みやこ町","region":"北九州"},
-{"name":"北九州市","region":"北九州"},
+
 
 {"name":"飯塚市","region":"筑豊"},
 {"name":"嘉麻市","region":"筑豊"},

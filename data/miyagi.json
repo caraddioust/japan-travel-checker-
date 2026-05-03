@@ -11,6 +11,14 @@
   {"name":"大和町","region":"仙台"},
   {"name":"大郷町","region":"仙台"},
   {"name":"大衡村","region":"仙台"},
+  
+  {"name":"大崎市","region":"県北"},
+  {"name":"栗原市","region":"県北"},
+  {"name":"登米市","region":"県北"},
+  {"name":"色麻町","region":"県北"},
+  {"name":"加美町","region":"県北"},
+  {"name":"涌谷町","region":"県北"},
+  {"name":"美里町","region":"県北"},
 
   {"name":"白石市","region":"県南"},
   {"name":"角田市","region":"県南"},
@@ -23,14 +31,6 @@
   {"name":"丸森町","region":"県南"},
   {"name":"亘理町","region":"県南"},
   {"name":"山元町","region":"県南"},
-
-  {"name":"大崎市","region":"県北"},
-  {"name":"栗原市","region":"県北"},
-  {"name":"登米市","region":"県北"},
-  {"name":"色麻町","region":"県北"},
-  {"name":"加美町","region":"県北"},
-  {"name":"涌谷町","region":"県北"},
-  {"name":"美里町","region":"県北"},
 
   {"name":"石巻市","region":"沿岸"},
   {"name":"東松島市","region":"沿岸"},
