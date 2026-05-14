@@ -63,26 +63,17 @@
     <h1>🗾 都道府県 訪問記録</h1>
 
 <div class="stats">
-    <!-- 都道府県の統計 -->
+    <div style="margin-bottom: 10px;">
+        <button id="view-current" onclick="switchView('current')" style="font-weight:bold;">現行自治体</button>
+        <button id="view-old" onclick="switchView('old')">旧市町村</button>
+    </div>
+
     都道府県：<b><span id="pref-count">0</span></b> / 47<br>
-    <small>
-        ( 
-        🚗通過: <span id="pref-pass">0</span> | 
-        🧡訪問: <span id="pref-visit">0</span> | 
-        💜宿泊: <span id="pref-stay">0</span> 
-        )
-    </small>
+    <small>( 🚗通過:<span id="pref-pass">0</span> | 🧡訪問:<span id="pref-visit">0</span> | 💜宿泊:<span id="pref-stay">0</span> )</small>
     <br>
 
-    <!-- 市町村の統計 -->
-    市町村：<b><span id="city-count">0</span></b> / <span id="city-total">0</span><br>
-    <small>
-        ( 
-        🚗通過: <span id="city-pass">0</span> | 
-        🧡訪問: <span id="city-visit">0</span> | 
-        💜宿泊: <span id="city-stay">0</span> 
-        )
-    </small>
+    <span id="stat-label">市町村</span>：<b><span id="city-count">0</span></b> / <span id="city-total">0</span><br>
+    <small>( 🚗通過:<span id="city-pass">0</span> | 🧡訪問:<span id="city-visit">0</span> | 💜宿泊:<span id="city-stay">0</span> )</small>
 </div>
 
     <div id="regions-container"></div>
@@ -91,53 +82,53 @@
 
 <script>
     const prefectures = [
-        {name:"北海道",region:"hokkaido",id:"hokkaido",total:179},
-        {name:"青森県",region:"tohoku",id:"aomori",total:40},
-        {name:"岩手県",region:"tohoku",id:"iwate",total:33},
-        {name:"宮城県",region:"tohoku",id:"miyagi",total:35},
-        {name:"秋田県",region:"tohoku",id:"akita",total:25},
-        {name:"山形県",region:"tohoku",id:"yamagata",total:35},
-        {name:"福島県",region:"tohoku",id:"fukushima",total:59},
-        {name:"茨城県",region:"kanto",id:"ibaraki",total:44},
-        {name:"栃木県",region:"kanto",id:"tochigi",total:25},
-        {name:"群馬県",region:"kanto",id:"gunma",total:35},
-        {name:"埼玉県",region:"kanto",id:"saitama",total:63},
-        {name:"千葉県",region:"kanto",id:"chiba",total:54},
-        {name:"東京都",region:"kanto",id:"tokyo",total:62},
-        {name:"神奈川県",region:"kanto",id:"kanagawa",total:33},
-        {name:"新潟県",region:"chubu",id:"niigata",total:30},
-        {name:"富山県",region:"chubu",id:"toyama",total:15},
-        {name:"石川県",region:"chubu",id:"ishikawa",total:19},
-        {name:"福井県",region:"chubu",id:"fukui",total:17},
-        {name:"山梨県",region:"chubu",id:"yamanashi",total:27},
-        {name:"長野県",region:"chubu",id:"nagano",total:77},
-        {name:"岐阜県",region:"chubu",id:"gifu",total:42},
-        {name:"静岡県",region:"chubu",id:"shizuoka",total:35},
-        {name:"愛知県",region:"chubu",id:"aichi",total:54},
-        {name:"三重県",region:"kinki",id:"mie",total:29},
-        {name:"滋賀県",region:"kinki",id:"shiga",total:19},
-        {name:"京都府",region:"kinki",id:"kyoto",total:26},
-        {name:"大阪府",region:"kinki",id:"osaka",total:43},
-        {name:"兵庫県",region:"kinki",id:"hyogo",total:41},
-        {name:"奈良県",region:"kinki",id:"nara",total:39},
-        {name:"和歌山県",region:"kinki",id:"wakayama",total:30},
-        {name:"鳥取県",region:"chugoku",id:"tottori",total:19},
-        {name:"島根県",region:"chugoku",id:"shimane",total:19},
-        {name:"岡山県",region:"chugoku",id:"okayama",total:27},
-        {name:"広島県",region:"chugoku",id:"hiroshima",total:23},
-        {name:"山口県",region:"chugoku",id:"yamaguchi",total:19},
-        {name:"徳島県",region:"shikoku",id:"tokushima",total:24},
-        {name:"香川県",region:"shikoku",id:"kagawa",total:17},
-        {name:"愛媛県",region:"shikoku",id:"ehime",total:20},
-        {name:"高知県",region:"shikoku",id:"kochi",total:34},
-        {name:"福岡県",region:"kyushu",id:"fukuoka",total:60},
-        {name:"佐賀県",region:"kyushu",id:"saga",total:20},
-        {name:"長崎県",region:"kyushu",id:"nagasaki",total:21},
-        {name:"熊本県",region:"kyushu",id:"kumamoto",total:45},
-        {name:"大分県",region:"kyushu",id:"oita",total:18},
-        {name:"宮崎県",region:"kyushu",id:"miyazaki",total:26},
-        {name:"鹿児島県",region:"kyushu",id:"kagoshima",total:43},
-        {name:"沖縄県",region:"kyushu",id:"okinawa",total:41}
+        {name:"北海道",region:"hokkaido",id:"hokkaido",total:179,oldTotal:212},
+        {name:"青森県",region:"tohoku",id:"aomori",total:40,oldTotal:67},
+        {name:"岩手県",region:"tohoku",id:"iwate",total:33,oldTotal:59},
+        {name:"宮城県",region:"tohoku",id:"miyagi",total:35,oldTotal:71},
+        {name:"秋田県",region:"tohoku",id:"akita",total:25,oldTotal:69},
+        {name:"山形県",region:"tohoku",id:"yamagata",total:35,oldTotal:44},
+        {name:"福島県",region:"tohoku",id:"fukushima",total:59,oldTotal:90},
+        {name:"茨城県",region:"kanto",id:"ibaraki",total:44,oldTotal:85},
+        {name:"栃木県",region:"kanto",id:"tochigi",total:25,oldTotal:49},
+        {name:"群馬県",region:"kanto",id:"gunma",total:35,oldTotal:70},
+        {name:"埼玉県",region:"kanto",id:"saitama",total:63,oldTotal:92},
+        {name:"千葉県",region:"kanto",id:"chiba",total:54,oldTotal:80},
+        {name:"東京都",region:"kanto",id:"tokyo",total:62,oldTotal:40},
+        {name:"神奈川県",region:"kanto",id:"kanagawa",total:33,oldTotal:37},
+        {name:"新潟県",region:"chubu",id:"niigata",total:30,oldTotal:112},
+        {name:"富山県",region:"chubu",id:"toyama",total:15,oldTotal:35},
+        {name:"石川県",region:"chubu",id:"ishikawa",total:19,oldTotal:41},
+        {name:"福井県",region:"chubu",id:"fukui",total:17,oldTotal:35},
+        {name:"山梨県",region:"chubu",id:"yamanashi",total:27,oldTotal:64},
+        {name:"長野県",region:"chubu",id:"nagano",total:77,oldTotal:120},
+        {name:"岐阜県",region:"chubu",id:"gifu",total:42,oldTotal:99},
+        {name:"静岡県",region:"chubu",id:"shizuoka",total:35,oldTotal:74},
+        {name:"愛知県",region:"chubu",id:"aichi",total:54,oldTotal:88},
+        {name:"三重県",region:"kinki",id:"mie",total:29,oldTotal:69},
+        {name:"滋賀県",region:"kinki",id:"shiga",total:19,oldTotal:50},
+        {name:"京都府",region:"kinki",id:"kyoto",total:26,oldTotal:44},
+        {name:"大阪府",region:"kinki",id:"osaka",total:43,oldTotal:44},
+        {name:"兵庫県",region:"kinki",id:"hyogo",total:41,oldTotal:91},
+        {name:"奈良県",region:"kinki",id:"nara",total:39,oldTotal:47},
+        {name:"和歌山県",region:"kinki",id:"wakayama",total:30,oldTotal:50},
+        {name:"鳥取県",region:"chugoku",id:"tottori",total:19,oldTotal:39},
+        {name:"島根県",region:"chugoku",id:"shimane",total:19,oldTotal:59},
+        {name:"岡山県",region:"chugoku",id:"okayama",total:27,oldTotal:78},
+        {name:"広島県",region:"chugoku",id:"hiroshima",total:23,oldTotal:86},
+        {name:"山口県",region:"chugoku",id:"yamaguchi",total:19,oldTotal:56},
+        {name:"徳島県",region:"shikoku",id:"tokushima",total:24,oldTotal:50},
+        {name:"香川県",region:"shikoku",id:"kagawa",total:17,oldTotal:43},
+        {name:"愛媛県",region:"shikoku",id:"ehime",total:20,oldTotal:70},
+        {name:"高知県",region:"shikoku",id:"kochi",total:34,oldTotal:53},
+        {name:"福岡県",region:"kyushu",id:"fukuoka",total:60,oldTotal:97},
+        {name:"佐賀県",region:"kyushu",id:"saga",total:20,oldTotal:49},
+        {name:"長崎県",region:"kyushu",id:"nagasaki",total:21,oldTotal:79},
+        {name:"熊本県",region:"kyushu",id:"kumamoto",total:45,oldTotal:94},
+        {name:"大分県",region:"kyushu",id:"oita",total:18,oldTotal:58},
+        {name:"宮崎県",region:"kyushu",id:"miyazaki",total:26,oldTotal:44},
+        {name:"鹿児島県",region:"kyushu",id:"kagoshima",total:43,oldTotal:96},
+        {name:"沖縄県",region:"kyushu",id:"okinawa",total:41,oldTotal:53}
     ];
 
     const regionNames = {
@@ -145,112 +136,103 @@
         kinki: "近畿地方", chugoku: "中国地方", shikoku: "四国地方", kyushu: "九州・沖縄地方"
     };
 
-    function renderPage() {
-        const container = document.getElementById('regions-container');
-        container.innerHTML = "";
-        let currentRegion = "";
-        let currentUl = null;
+    // 表示モードの管理（初期値は現行）
+let currentViewMode = 'current';
 
-        let totalCityCount = 0;
-        let cityPass = 0, cityVisit = 0, cityStay = 0;
+function switchView(mode) {
+    currentViewMode = mode;
+    // ボタンの見た目を更新
+    document.getElementById('view-current').style.fontWeight = (mode === 'current' ? 'bold' : 'normal');
+    document.getElementById('view-old').style.fontWeight = (mode === 'old' ? 'bold' : 'normal');
+    document.getElementById('stat-label').textContent = (mode === 'current' ? '市町村' : '旧市町村');
+    
+    renderPage(); // 再描画
+}
 
-        let totalPrefCount = 0;
-        let prefPass = 0, prefVisit = 0, prefStay = 0;
+function renderPage() {
+    const container = document.getElementById('regions-container');
+    container.innerHTML = "";
+    let currentRegion = "";
+    let currentUl = null;
+
+    // --- 【重要】ここで変数をゼロリセットして定義 ---
+    let cityVisited = 0, cityPass = 0, cityVisit = 0, cityStay = 0;
+    let prefVisited = 0, prefPass = 0, prefVisit = 0, prefStay = 0;
+
+    prefectures.forEach(item => {
+        // 地方見出しの作成
+        if (currentRegion !== item.region) {
+            currentRegion = item.region;
+            const h2 = document.createElement('h2');
+            h2.textContent = regionNames[item.region];
+            container.appendChild(h2);
+            currentUl = document.createElement('ul');
+            currentUl.className = 'pref-grid';
+            container.appendChild(currentUl);
+        }
+
+        // データの読み込み（モードによってキーを変える）
+        const key = (currentViewMode === 'current') ? `status_${item.id}` : `status_${item.id}_old`;
+        const statusMap = JSON.parse(localStorage.getItem(key)) || {};
+        const statuses = Object.values(statusMap);
+
+        // --- 市町村の集計 ---
+        // 'none' 以外の数を数える
+        const prefCityCount = statuses.filter(s => s !== 'none').length;
         
-        const overallCityTotal = prefectures.reduce((sum, p) => sum + p.total, 0);
+        // 全体統計に加算（ここが 0 のままだと増えません）
+        cityVisited += prefCityCount;
+        cityPass += statuses.filter(s => s === 'pass').length;
+        cityVisit += statuses.filter(s => s === 'visit').length;
+        cityStay += statuses.filter(s => s === 'stay').length;
 
-        prefectures.forEach(item => {
-            // 地方ごとのセクション作成
-            if (currentRegion !== item.region) {
-                currentRegion = item.region;
-                const h2 = document.createElement('h2');
-                h2.textContent = regionNames[item.region];
-                container.appendChild(h2);
-                currentUl = document.createElement('ul');
-                currentUl.className = 'pref-grid';
-                container.appendChild(currentUl);
-            }
+        // --- 都道府県の集計 ---
+        if (prefCityCount > 0) {
+            prefVisited++;
+            if (statuses.includes('stay')) prefStay++;
+            else if (statuses.includes('visit')) prefVisit++;
+            else if (statuses.includes('pass')) prefPass++;
+        }
 
-            // データ読み込み
-            const key = `status_${item.id}`;
-            const statusMap = JSON.parse(localStorage.getItem(key)) || {};
-            const statuses = Object.values(statusMap);
-            
-            // カウント計算 ('none' 以外をカウント)
-            const prefVisitedCount = statuses.filter(s => s !== 'none').length;
-            totalCityCount += prefVisitedCount;
-            cityPass += statuses.filter(s => s === 'pass').length;
-            cityVisit += statuses.filter(s => s === 'visit').length;
-            cityStay += statuses.filter(s => s === 'stay').length;
-            
-            //--- 都道府県の集計 ---
-            if (prefVisitedCount > 0){
-            totalPrefCount++;
-            // その県の中で一番強い状態を、その県の状態とする
-                if (statuses.includes('stay')) {
-                    prefStay++;
-                } else if (statuses.includes('visit')) {
-                    prefVisit++;
-                } else if (statuses.includes('pass')) {
-                    prefPass++;
-                }
-            }
-        
+        // --- リスト表示の作成 ---
+        const totalDisplay = (currentViewMode === 'current') ? item.total : (item.oldTotal || 0);
+        const li = document.createElement('li');
+        li.className = 'pref';
+        li.textContent = `${item.name} (${prefCityCount}/${totalDisplay})`;
 
-            // リスト作成
-            const li = document.createElement('li');
-            li.className = 'pref';
-            li.textContent = `${item.name} (${prefVisitedCount}/${item.total})`;
+        // 色付け
+        if (statuses.includes('stay')) li.classList.add('completed');
+        else if (statuses.includes('visit')) li.classList.add('visited');
+        else if (statuses.includes('pass')) li.classList.add('passing');
 
-            // クラス判定
-            if (statuses.includes('stay')) {
-                li.classList.add('completed');
-            } else if (statuses.includes('visit')) {
-                li.classList.add('visited');
-            } else if (statuses.includes('pass')) {
-                li.classList.add('passing');
-            }
+        // クリックイベント
+        li.onclick = () => {
+            window.location.href = `city.html?pref=${item.id}&name=${encodeURIComponent(item.name)}&type=${currentViewMode}`;
+        };
 
-            // --- クリック処理（シングルクリックで即移動、ダブルクリック構造も保持） ---
-            let clickCount = 0;
-            li.onclick = function() {
-                clickCount++;
+        currentUl.appendChild(li);
+    });
 
-                if (clickCount === 1) {
-                    // --- 1回目のクリック（シングルクリック） ---
-                    setTimeout(() => {
-                        if (clickCount === 1) {
-                            // シングルクリック確定時の処理：ページ移動
-                            window.location.href = `city.html?pref=${item.id}&name=${encodeURIComponent(item.name)}`;
-                        } else {
-                            // ダブルクリック確定時の処理：今は空ですが、将来の拡張用に残せます
-                            console.log("ダブルクリックされました（将来の拡張用）");
-                            // 例：詳細情報をポップアップで出す、など
-                        }
-                        clickCount = 0; // カウントをリセット
-                    }, 250); // 0.25秒以内に2回目が来なければシングルとみなす
-                }
-            };
-
-            currentUl.appendChild(li);
-        });
-
-        // --- 画面への反映 ---
-    // 都道府県
-    document.getElementById('pref-count').textContent = totalPrefCount;
+    // --- 【重要】ループが終わった後に画面に反映 ---
+    
+    // 都道府県の反映
+    document.getElementById('pref-count').textContent = prefVisited;
     document.getElementById('pref-pass').textContent = prefPass;
     document.getElementById('pref-visit').textContent = prefVisit;
     document.getElementById('pref-stay').textContent = prefStay;
 
-    // 市町村
-    document.getElementById('city-count').textContent = totalCityCount;
-    document.getElementById('city-total').textContent = overallCityTotal;
+    // 市町村の反映
+    document.getElementById('city-count').textContent = cityVisited;
     document.getElementById('city-pass').textContent = cityPass;
     document.getElementById('city-visit').textContent = cityVisit;
     document.getElementById('city-stay').textContent = cityStay;
+
+    // 全体の分母
+    const overallTotal = prefectures.reduce((sum, p) => {
+        return sum + (currentViewMode === 'current' ? p.total : (p.oldTotal || 0));
+    }, 0);
+    document.getElementById('city-total').textContent = overallTotal;
 }
-
-
     // バックアップ機能
     window.exportData = function() {
         const allData = {};

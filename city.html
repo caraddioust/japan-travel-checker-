@@ -132,7 +132,8 @@
     const mode = urlParams.get('type') || 'current';   // 現行か旧か
 
     // 【重要】保存・読み込みに使う共通の鍵（index.htmlと合わせる）
-    const storageKey = `status_${prefId}`; 
+    // URLからtypeを取得し、oldなら末尾に付ける
+    const storageKey = (mode === 'old') ? `status_${prefId}_old` : `status_${prefId}`;
 
     // 2. タイトルと見出しの設定
     const suffix = (mode === 'old') ? '（旧市町村）' : '';
