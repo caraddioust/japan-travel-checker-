@@ -15,14 +15,14 @@
   {"name":"川棚町","region":"県北"},
   {"name":"東彼杵町","region":"県北"},
 
-  {"name":"島原市","region":"島原半島"},
-  {"name":"雲仙市","region":"島原半島"},
-  {"name":"南島原市","region":"島原半島"},
+  {"name":"島原市","region":"島原"},
+  {"name":"雲仙市","region":"島原"},
+  {"name":"南島原市","region":"島原"},
 
-  {"name":"五島市","region":"五島"},
-  {"name":"新上五島町","region":"五島"},
+  {"name":"五島市","region":"諸島"},
+  {"name":"新上五島町","region":"諸島"},
 
-  {"name":"壱岐市","region":"壱岐"},
+  {"name":"壱岐市","region":"諸島"},
 
-  {"name":"対馬市","region":"対馬"}
+  {"name":"対馬市","region":"諸島"}
 ]

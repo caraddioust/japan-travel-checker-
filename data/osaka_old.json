@@ -17,7 +17,7 @@
   {"name":"門真市","region":"北河内"},
   {"name":"四條畷市","region":"北河内"},
   {"name":"交野市","region":"北河内"},
-  
+
   {"name":"大阪市","region":"中河内"},
   {"name":"八尾市","region":"中河内"},
   {"name":"柏原市","region":"中河内"},
@@ -34,6 +34,7 @@
   {"name":"千早赤阪村","region":"南河内"},
 
   {"name":"堺市","region":"泉州"},
+  {"name":"美原町(堺市)","region":"泉州"},
   {"name":"岸和田市","region":"泉州"},
   {"name":"泉大津市","region":"泉州"},
   {"name":"貝塚市","region":"泉州"},

@@ -1,6 +1,6 @@
 [{"name":"今治市","region":"東予"},
-{"name":"新居浜市","region":"東予"},
 {"name":"西条市","region":"東予"},
+{"name":"新居浜市","region":"東予"},
 {"name":"四国中央市","region":"東予"},
 {"name":"上島町","region":"東予"},
 
@@ -11,12 +11,12 @@
 {"name":"松前町","region":"中予"},
 {"name":"砥部町","region":"中予"},
 
-{"name":"宇和島市","region":"南予"},
-{"name":"八幡浜市","region":"南予"},
 {"name":"大洲市","region":"南予"},
+{"name":"八幡浜市","region":"南予"},
 {"name":"西予市","region":"南予"},
+{"name":"宇和島市","region":"南予"},
 {"name":"内子町","region":"南予"},
 {"name":"伊方町","region":"南予"},
-{"name":"松野町","region":"南予"},
 {"name":"鬼北町","region":"南予"},
+{"name":"松野町","region":"南予"},
 {"name":"愛南町","region":"南予"}]
