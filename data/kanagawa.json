@@ -1,6 +1,11 @@
 [
-  {"name":"横浜市","region":"横浜川崎"},
-  {"name":"川崎市","region":"横浜川崎"},
+  {"name":"横浜市","region":"東部"},
+  {"name":"川崎市","region":"東部"},
+  {"name":"横須賀市","region":"東部"},
+  {"name":"鎌倉市","region":"東部"},
+  {"name":"逗子市","region":"東部"},
+  {"name":"三浦市","region":"東部"},
+  {"name":"葉山町","region":"東部"},
 
   {"name":"相模原市","region":"県央"},
   {"name":"厚木市","region":"県央"},
@@ -11,20 +16,14 @@
   {"name":"愛川町","region":"県央"},
   {"name":"清川村","region":"県央"},
 
-  {"name":"横須賀市","region":"横須賀三浦"},
-  {"name":"鎌倉市","region":"横須賀三浦"},
-  {"name":"逗子市","region":"横須賀三浦"},
-  {"name":"三浦市","region":"横須賀三浦"},
-  {"name":"葉山町","region":"横須賀三浦"},
-
   {"name":"平塚市","region":"湘南"},
   {"name":"藤沢市","region":"湘南"},
   {"name":"茅ヶ崎市","region":"湘南"},
   {"name":"秦野市","region":"湘南"},
   {"name":"伊勢原市","region":"湘南"},
+  {"name":"寒川町","region":"湘南"},
   {"name":"大磯町","region":"湘南"},
   {"name":"二宮町","region":"湘南"},
-  {"name":"寒川町","region":"湘南"},
 
   {"name":"小田原市","region":"県西"},
   {"name":"南足柄市","region":"県西"},

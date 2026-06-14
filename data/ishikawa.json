@@ -1,22 +1,22 @@
 [
   {"name":"金沢市","region":"加賀"},
-  {"name":"小松市","region":"加賀"},
-  {"name":"加賀市","region":"加賀"},
+  {"name":"かほく市","region":"加賀"},
+  {"name":"野々市市","region":"加賀"},
   {"name":"白山市","region":"加賀"},
   {"name":"能美市","region":"加賀"},
-  {"name":"野々市市","region":"加賀"},
-  {"name":"かほく市","region":"加賀"},
-  {"name":"川北町","region":"加賀"},
+  {"name":"小松市","region":"加賀"},
+  {"name":"加賀市","region":"加賀"},
   {"name":"津幡町","region":"加賀"},
   {"name":"内灘町","region":"加賀"},
+  {"name":"川北町","region":"加賀"},
 
   {"name":"七尾市","region":"能登"},
   {"name":"輪島市","region":"能登"},
   {"name":"珠洲市","region":"能登"},
   {"name":"羽咋市","region":"能登"},
-  {"name":"志賀町","region":"能登"},
   {"name":"宝達志水町","region":"能登"},
   {"name":"中能登町","region":"能登"},
+  {"name":"志賀町","region":"能登"},
   {"name":"穴水町","region":"能登"},
   {"name":"能登町","region":"能登"}
 ]

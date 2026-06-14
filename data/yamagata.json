@@ -6,11 +6,11 @@
   {"name":"村山市","region":"村山"},
   {"name":"尾花沢市","region":"村山"},
   {"name":"寒河江市","region":"村山"},
-  {"name":"河北町","region":"村山"},
   {"name":"西川町","region":"村山"},
-  {"name":"朝日町","region":"村山"},
   {"name":"大江町","region":"村山"},
+  {"name":"朝日町","region":"村山"},
   {"name":"大石田町","region":"村山"},
+  {"name":"河北町","region":"村山"},
   {"name":"中山町","region":"村山"},
   {"name":"山辺町","region":"村山"},
 
@@ -34,7 +34,7 @@
 
   {"name":"鶴岡市","region":"庄内"},
   {"name":"酒田市","region":"庄内"},
-  {"name":"三川町","region":"庄内"},
   {"name":"庄内町","region":"庄内"},
-  {"name":"遊佐町","region":"庄内"}
+  {"name":"遊佐町","region":"庄内"},
+  {"name":"三川町","region":"庄内"}
 ]

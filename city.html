@@ -1,245 +1,233 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <div class="usage-hint">
-        1回タップ：通過(水色)<br>
-        2回タップ：訪問(オレンジ)<br>
-        3回タップ：宿泊(紫)
-    </div>
-    <title>47都道府県制覇チェッカー</title>
+    <title>訪問記録</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f0f2f5; color: #333; }
-        h1 { text-align: center; }
-
-    .usage-hint {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.7); /* 黒っぽい半透明 */
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    pointer-events: none; /* メッセージ越しに下のボタンを押せるようにする */
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    animation: fadein 2s;
-    }
-        
-        /* カウンターの見た目 */
-        .counter {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 10px;
-            z-index: 100;
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #333;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        /* 都道府県リストのレイアウト */
+        h1 {
+            text-align: center;
+            color: #1d1d1f;
+        }
+        .stats {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .stat-item {
+            flex: 1;
+        }
+        .stat-num {
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #86868b;
+        }
+        .mode-switch {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .mode-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: #e8e8ed;
+            color: #1d1d1f;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .mode-btn.active {
+            background-color: #0071e3;
+            color: #fff;
+        }
         .pref-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 10px;
-            list-style: none;
             padding: 0;
+            list-style: none;
         }
-
-        /* 共通設定 */
-        .pref.visited { color: white; }
-
-        /* 地方ごとの色設定（例） */
-        .hokkaido.visited { background-color: #448aff; }
-        .tohoku.visited   { background-color: #4caf50; }
-        .kanto.visited    { background-color: #ff9800; }
-        .chubu.visited    { background-color: #ffeb3b; color: #333; }
-        .kinki.visited    { background-color: #e91e63; }
-        .chugoku.visited  { background-color: #8bc34a; }
-        .shikoku.visited  { background-color: #00bcd4; }
-        .kyushu.visited   { background-color: #795548; }
-
-        /* 各都道府県ボタンの見た目 */
-        .pref {
-            background: white;
-            border: 2px solid #ddd;
-            padding: 15px 10px;
-            text-align: center;
+        .pref.city {
+            padding: 12px;
             border-radius: 8px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
             user-select: none;
+           
         }
-
-        /* 訪問済みの色（オレンジ） */
-        .pref.visited {
-            background-color: #ff5722;
-            color: white;
-            border-color: #e64a19;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* なし（デフォルト） */
-        .pref { background: #eee; }
-
-        /* 通過 (水色) */
-        .pref.pass { background: #81d4fa; color: #fff; }
-
-        /* 訪問 (オレンジ) */
-        .pref.visit { background: #ff9800; color: #fff; }
-
-        /* 宿泊 (紫) */
-        .pref.stay { background: #9c27b0; color: #fff; }
-                
-        .pref.visited.hokkaido { background-color: #448aff; } /* 青 */
-        .pref.visited.tohoku   { background-color: #4caf50; } /* 緑 */
-        .pref.visited.kanto    { background-color: #ff9800; } /* オレンジ */
-        .pref.visited.chubu    { background-color: #fbc02d; color: #333; } /* 黄 */
-        .pref.visited.kinki    { background-color: #e91e63; } /* ピンク */
-        .pref.visited.chugoku  { background-color: #8bc34a; } /* 黄緑 */
-        .pref.visited.shikoku  { background-color: #00bcd4; } /* 水色 */
-        .pref.visited.kyushu   { background-color: #795548; } /* 茶色 */
-
-        .pref:hover { border-color: #999; }
+        /* 状態ごとのカラー */
+        .pref.city.none { background-color: #ffffff; color: #333; }
+        .pref.city.pass { background-color: #81d4fa; color: #fff; }
+        .pref.city.visit { background-color: #ff9800; color: #fff; }
+        .pref.city.stay { background-color: #9c27b0; color: #fff; }
     </style>
 </head>
 <body>
 
-    <h1>🗾 福岡県 訪問記録</h1>
-    <a href="index.html" style="text-decoration: none; color: #666;">← 都道府県一覧へ戻る</a>
+    <h1>🗾 都道府県 訪問記録</h1>
+    <a href="index.html" style="text-decoration: none; color: #0071e3; display: block; margin-bottom: 15px;">← 都道府県一覧へ戻る</a>
+    
     <div class="stats">
-        制覇数：<span id="count">0</span> / <span id="total">0</span><br>
-        <small>
-            ( 通過: <span id="pass-count">0</span> | 訪問: <span id="visit-count">0</span> | 宿泊: <span id="stay-count">0</span> )
-        </small>
+        <div class="stat-item">
+            <span class="stat-num" id="count">0</span>/<span id="total">0</span>
+            <span class="stat-label">制覇数</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num" style="color: #81d4fa;" id="pass-count">0</span>
+            <span class="stat-label">通過</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num" style="color: #ff9800;" id="visit-count">0</span>
+            <span class="stat-label">訪問</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num" style="color: #9c27b0;" id="stay-count">0</span>
+            <span class="stat-label">宿泊</span>
+        </div>
     </div>
-    <div class="mode-switch" style="margin: 10px 0; text-align: center;">
-        <button id="btn-current" onclick="switchMode('current')" style="font-weight: bold;">現行市町村</button>
-        <button id="btn-old" onclick="switchMode('old')">合併前（旧市町村）</button>
+
+    <div class="mode-switch">
+        <button class="mode-btn" id="btn-current" onclick="switchMode('current')">現行市町村</button>
+        <button class="mode-btn" id="btn-old" onclick="switchMode('old')">旧市町村</button>
     </div>
+
     <div id="regions-container"></div>
 
-<script>
-    // 1. URLから情報を取得
-    const urlParams = new URLSearchParams(window.location.search);
-    const prefId = urlParams.get('pref') || 'fukuoka'; // 県のID（例: fukuoka）
-    const prefName = urlParams.get('name') || '都道府県'; // 県の名前
-    const mode = urlParams.get('type') || 'current';   // 現行か旧か
+    <script>
+        // URLパラメータの取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const prefId = urlParams.get('pref') || 'fukuoka'; 
+        const prefName = urlParams.get('name') || '都道府県'; 
+        const mode = urlParams.get('type') || 'current';   
 
-    // 【重要】保存・読み込みに使う共通の鍵（index.htmlと合わせる）
-    // URLからtypeを取得し、oldなら末尾に付ける
-    const storageKey = (mode === 'old') ? `status_${prefId}_old` : `status_${prefId}`;
+        const storageKey = (mode === 'old') ? `status_${prefId}_old` : `status_${prefId}`;
 
-    // 2. タイトルと見出しの設定
-    const suffix = (mode === 'old') ? '（旧市町村）' : '';
-    document.querySelector('h1').textContent = `🗾 ${prefName} 訪問記録${suffix}`;
-    document.title = `${prefName} 訪問記録${suffix}`;
-
-    // 3. データの読み込み
-    const fileName = (mode === 'old') ? `${prefId}_old` : prefId;
-    fetch(`./data/${fileName}.json`)
-        .then(response => {
-            if (!response.ok) throw new Error("File not found");
-            return response.json();
-        })
-        .then(data => {
-            renderCityList(data);
-            updateCounter(data);
-        })
-        .catch(error => {
-            console.error("Fetch Error:", error);
-            document.getElementById('regions-container').innerHTML = 
-                `<p style="color:red; text-align:center;">データ（${fileName}.json）が見つかりません。</p>`;
-        });
-
-    // 状態のサイクル
-    const cycle = ['none', 'pass', 'visit', 'stay'];
-
-    // 4. 画面を作る関数
-    function renderCityList(cities) {
-        const container = document.getElementById('regions-container');
-        if (!container) return;
-        container.innerHTML = ""; 
-
-        // 保存されているデータを取得
-        let statusMap = JSON.parse(localStorage.getItem(storageKey)) || {};
+        // タイトル・ボタンの見た目設定
+        const suffix = (mode === 'old') ? '（旧市町村）' : '';
+        document.querySelector('h1').textContent = `🗾 ${prefName} 訪問記録${suffix}`;
+        document.title = `${prefName} 訪問記録${suffix}`;
         
-        let currentRegion = "";
-        let currentUl = null;
-        
-        cities.forEach(item => {
-            if (currentRegion !== item.region) {
-                currentRegion = item.region;
-                const h2 = document.createElement('h2');
-                h2.textContent = item.region;
-                h2.style.borderBottom = "2px solid #ccc";
-                h2.style.marginTop = "30px";
-                container.appendChild(h2);
+        document.getElementById('btn-current').classList.toggle('active', mode !== 'old');
+        document.getElementById('btn-old').classList.toggle('active', mode === 'old');
 
-                currentUl = document.createElement('ul');
-                currentUl.className = 'pref-grid'; 
-                container.appendChild(currentUl);
-            }
+        const cycle = ['none', 'pass', 'visit', 'stay'];
 
-            const li = document.createElement('li');
-            li.textContent = item.name;
+        // データの読み込みと読み込み後の処理
+        const fileName = (mode === 'old') ? `${prefId}_old` : prefId;
+        fetch(`./data/${fileName}.json`)
+            .then(response => {
+                if (!response.ok) throw new Error("File not found");
+                return response.json();
+            })
+            .then(data => {
+                renderCityList(data);
+                updateCounter(data);
+            })
+            .catch(error => {
+                console.error("Fetch Error:", error);
+                document.getElementById('regions-container').innerHTML = 
+                    `<p style="color:red; text-align:center;">データ（${fileName}.json）が見つかりません。</p>`;
+            });
+
+// 新しいデータ構造に対応したリスト生成関数
+        function renderCityList(cities) {
+            const container = document.getElementById('regions-container');
+            if (!container) return;
+            container.innerHTML = ""; 
+
+            // 【ここが抜けていました！】Local Storageから現在の状態を読み込む
+            let statusMap = JSON.parse(localStorage.getItem(storageKey)) || {};
+            let currentRegion = "";
+            let currentUl = null;
             
-            // 現在の状態をクラスとして付与
-            const currentStatus = statusMap[item.name] || 'none';
-            li.className = `pref city ${currentStatus}`; 
+            cities.forEach(item => {
+                if (currentRegion !== item.region) {
+                    currentRegion = item.region;
+                    const h2 = document.createElement('h2');
+                    h2.textContent = item.region;
+                    h2.style.marginTop = "30px";
+                    h2.style.borderBottom = "2px solid #e8e8ed";
+                    h2.style.paddingBottom = "5px";
+                    container.appendChild(h2);
+
+                    currentUl = document.createElement('ul');
+                    currentUl.className = 'pref-grid'; 
+                    container.appendChild(currentUl);
+                }
+
+                const li = document.createElement('li');
+                
+                // ① 画面表示用の名前（ parent があれば <br> で改行する ）
+                li.innerHTML = item.parent ? `${item.name}<br>(${item.parent})` : item.name;
+                
+                // ② データ保存用の名前（ 括弧付きの1行の文字列 「作手村 (新城市)」 ）
+                const storageName = item.parent ? `${item.name} (${item.parent})` : item.name;
+                
+                // 保存されている状態（none, pass など）を判定
+                const currentStatus = statusMap[storageName] || 'none';
+                li.className = `pref city ${currentStatus}`; 
+                
+                li.onclick = function() {
+                    statusMap = JSON.parse(localStorage.getItem(storageKey)) || {};
+                    const current = statusMap[storageName] || 'none';
+
+                    const nextIndex = (cycle.indexOf(current) + 1) % cycle.length;
+                    const nextStatus = cycle[nextIndex];
+                    
+                    statusMap[storageName] = nextStatus;
+                    localStorage.setItem(storageKey, JSON.stringify(statusMap));
+                    
+                    this.className = `pref city ${nextStatus}`;
+                    updateCounter(cities);
+                };
+
+                if (currentUl) currentUl.appendChild(li);
+            });
+        }
+
+
+        // カウンターを更新する関数
+        function updateCounter(cities) {
+            const statusMap = JSON.parse(localStorage.getItem(storageKey)) || {};
+            const statuses = Object.values(statusMap);
+            const visitedCount = statuses.filter(s => s !== 'none').length;
             
-            li.onclick = function() {
-                // 最新のデータを取得
-                statusMap = JSON.parse(localStorage.getItem(storageKey)) || {};
-                const current = statusMap[item.name] || 'none';
+            const passCount = statuses.filter(s => s === 'pass').length;
+            const visitCount = statuses.filter(s => s === 'visit').length;
+            const stayCount = statuses.filter(s => s === 'stay').length;
 
-                // 次の状態へ
-                const nextIndex = (cycle.indexOf(current) + 1) % cycle.length;
-                const nextStatus = cycle[nextIndex];
-                
-                // 状態を保存
-                statusMap[item.name] = nextStatus;
-                localStorage.setItem(storageKey, JSON.stringify(statusMap));
-                
-                // 見た目を更新
-                this.className = `pref city ${nextStatus}`;
-                updateCounter(cities);
-            };
-            if (currentUl) currentUl.appendChild(li);
-        });
-    }
+            document.getElementById('count').textContent = visitedCount;
+            document.getElementById('total').textContent = cities.length;
+            document.getElementById('pass-count').textContent = passCount;
+            document.getElementById('visit-count').textContent = visitCount;
+            document.getElementById('stay-count').textContent = stayCount;
+        }
 
-    // 5. カウンター更新関数
-function updateCounter(cities) {
-    const statusMap = JSON.parse(localStorage.getItem(storageKey)) || {};
-    const statuses = Object.values(statusMap);
-
-    const visitedCount = statuses.filter(s => s !== 'none').length;
-    
-    // 内訳のカウント
-    const passCount = statuses.filter(s => s === 'pass').length;
-    const visitCount = statuses.filter(s => s === 'visit').length;
-    const stayCount = statuses.filter(s => s === 'stay').length;
-
-    document.getElementById('count').textContent = visitedCount;
-    document.getElementById('total').textContent = cities.length;
-
-    // 内訳を反映
-    document.getElementById('pass-count').textContent = passCount;
-    document.getElementById('visit-count').textContent = visitCount;
-    document.getElementById('stay-count').textContent = stayCount;
-}
-
-    // モード切替（現行/旧）
-    window.switchMode = function(newMode) {
-        window.location.href = `city.html?pref=${prefId}&name=${encodeURIComponent(prefName)}&type=${newMode}`;
-    };
-</script>
-<a href="index.html" style="text-decoration: none; color: #666;">← 都道府県一覧へ戻る</a>
+        // モード切り替え関数
+        window.switchMode = function(newMode) {
+            window.location.href = `city.html?pref=${prefId}&name=${encodeURIComponent(prefName)}&type=${newMode}`;
+        };
+    </script>
 </body>
 </html>

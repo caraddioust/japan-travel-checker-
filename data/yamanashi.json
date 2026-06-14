@@ -11,22 +11,22 @@
   {"name":"都留市","region":"郡内"},
   {"name":"大月市","region":"郡内"},
   {"name":"上野原市","region":"郡内"},
-  {"name":"道志村","region":"郡内"},
   {"name":"西桂町","region":"郡内"},
+  {"name":"富士河口湖町","region":"郡内"},
+  {"name":"丹波山村","region":"郡内"},
+  {"name":"小菅村","region":"郡内"},
+  {"name":"道志村","region":"郡内"},
   {"name":"忍野村","region":"郡内"},
   {"name":"山中湖村","region":"郡内"},
   {"name":"鳴沢村","region":"郡内"},
-  {"name":"富士河口湖町","region":"郡内"},
-  {"name":"小菅村","region":"郡内"},
-  {"name":"丹波山村","region":"郡内"},
 
   {"name":"山梨市","region":"峡東"},
   {"name":"笛吹市","region":"峡東"},
   {"name":"甲州市","region":"峡東"},
 
-  {"name":"市川三郷町","region":"峡南"},
+  {"name":"富士川町","region":"峡南"},
   {"name":"早川町","region":"峡南"},
+  {"name":"市川三郷町","region":"峡南"},
   {"name":"身延町","region":"峡南"},
-  {"name":"南部町","region":"峡南"},
-  {"name":"富士川町","region":"峡南"}
+  {"name":"南部町","region":"峡南"}
 ]

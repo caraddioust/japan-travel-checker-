@@ -10,14 +10,14 @@
   {"name":"朝日町","region":"北勢"},
   {"name":"川越町","region":"北勢"},
 
+  {"name":"伊賀市","region":"伊賀"},
+  {"name":"名張市","region":"伊賀"},
+
   {"name":"津市","region":"中勢"},
   {"name":"松阪市","region":"中勢"},
   {"name":"多気町","region":"中勢"},
   {"name":"明和町","region":"中勢"},
   {"name":"大台町","region":"中勢"},
-
-  {"name":"伊賀市","region":"伊賀"},
-  {"name":"名張市","region":"伊賀"},
 
   {"name":"伊勢市","region":"南勢"},
   {"name":"鳥羽市","region":"南勢"},

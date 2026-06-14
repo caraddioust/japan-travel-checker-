@@ -33,8 +33,8 @@
   {"name":"河南町","region":"南河内"},
   {"name":"千早赤阪村","region":"南河内"},
 
-  {"name":"堺市","region":"泉州"},
-  {"name":"美原町(堺市)","region":"泉州"},
+  {"name":"堺市","parent":"堺市","region":"泉州"},
+  {"name":"美原町","parent":"堺市","region":"泉州"},
   {"name":"岸和田市","region":"泉州"},
   {"name":"泉大津市","region":"泉州"},
   {"name":"貝塚市","region":"泉州"},
