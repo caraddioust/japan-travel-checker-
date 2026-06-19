@@ -1,14 +1,12 @@
 [
-  {"name":"さいたま市","region":"さいたま市"},
-
+  {"name":"さいたま市","region":"南部"},
   {"name":"川口市","region":"南部"},
   {"name":"蕨市","region":"南部"},
   {"name":"戸田市","region":"南部"},
-
-  {"name":"朝霞市","region":"南西部"},
-  {"name":"志木市","region":"南西部"},
-  {"name":"和光市","region":"南西部"},
-  {"name":"新座市","region":"南西部"},
+  {"name":"朝霞市","region":"南部"},
+  {"name":"志木市","region":"南部"},
+  {"name":"和光市","region":"南部"},
+  {"name":"新座市","region":"南部"},
 
   {"name":"春日部市","region":"東部"},
   {"name":"草加市","region":"東部"},
