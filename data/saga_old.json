@@ -38,7 +38,7 @@
 
   {"name":"伊万里市","region":"西部"},
   {"name":"西有田町","parent":"有田町","region":"西部"},
-  {"name":"暗田町","parent":"有田町","region":"西部"},
+  {"name":"有田町","parent":"有田町","region":"西部"},
 
   {"name":"武雄市","parent":"武雄市","region":"南部"},
   {"name":"山内町","parent":"武雄市","region":"南部"},
